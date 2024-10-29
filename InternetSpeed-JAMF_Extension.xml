@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><extensionAttribute>
+<displayName>Internet Speed Test</displayName>
+<description/>
+<dataType>string</dataType>
+<scriptContentsMac>#!/bin/bash&#13;
+function SpeedTest {&#13;
+	networkQuality -v&#13;
+}&#13;
+FileName="/private/tmp/SpeedTestEA.txt"&#13;
+SpeedTest &gt; $FileName&#13;
+ReportDate=`date '+%A %d-%B, %Y'`&#13;
+ReportTime=`date +"%T"`&#13;
+ReportDateTime=$ReportDate" - "$ReportTime&#13;
+UploadSpeed=$(head -n 5 $FileName | tail -1)&#13;
+DownloadSpeed=$(head -n 9 $FileName | tail -1)&#13;
+Upload=$(echo $UploadSpeed | cut -b 17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32)&#13;
+Download=$(echo $DownloadSpeed | cut -b 19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34)&#13;
+Result="Download Speed: "$Download" -- Upload Speed: "$Upload" as of "$ReportDateTime&#13;
+echo "&lt;result&gt;$Result&lt;/result&gt;" </scriptContentsMac>
+</extensionAttribute>
