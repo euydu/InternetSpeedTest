@@ -1,4 +1,8 @@
 #!/bin/bash
+# Created by Emre Uydu - System Engineer
+# emreuydu@gmail.com
+# Contact to me for more info
+############################################
 Message1=$(/Library/Application\ Support/JAMF/bin/jamfHelper.app/Contents/MacOS/jamfHelper -icon "/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/AppleTraceFile.icns" -lockHUD -heading "Internet Speed Test" -button1 "OK" -title "System" -defaultButton 1 -description "Internet speed test is in progress. This window will close automatically. Please do not close the self-service application." -windowType hud -timeout 15)
 function SpeedTest {
 	networkQuality -v
